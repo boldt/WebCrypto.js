@@ -9,4 +9,4 @@ This is a (first draft of a) simple wrapper for the [Web Cryptography API](http:
 * Modules for differenty crypto
 * bower.js
 * Require.js
-
+* semver.org
