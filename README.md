@@ -10,3 +10,4 @@ This is a (first draft of a) simple wrapper for the [Web Cryptography API](http:
 * bower.js
 * Require.js
 * semver.org
+* gh-pages
