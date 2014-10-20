@@ -10,8 +10,11 @@ This wrapper does not use any polyfill, it uses the raw Web Cryptography API.
 * Chrome 37.0
 * Firefox 34.0
 
+## Examples
+
+* https://boldt.github.io/WebCrypto.js/
+
 ## TODO
 
 * bower.js
 * semver.org
-* gh-pages for examples
