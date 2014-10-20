@@ -1,7 +1,9 @@
 # WebCrypto.js
 
-This is a (first draft of a) simple wrapper for the [Web Cryptography API](http://www.w3.org/TR/WebCryptoAPI/).
-This wrapper does not use any polyfill, it uses the raw Web Cryptography API.
+WebCrypto.js is a simple JavaScript library for the [Web Cryptography API](http://www.w3.org/TR/WebCryptoAPI/).
+This library does not use any polyfill, it uses the raw Web Cryptography API.
+
+This library just provided features, which are working in **all** supported browsers.
 
 **Hint: work is still in progress**
 
