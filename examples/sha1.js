@@ -1,4 +1,4 @@
-require(["WebCrypto"], function(WebCrypto){
+require(["SHA"], function(SHA){
 
     var sha1ArrayBufferToString = function(buffer) {
 
@@ -26,7 +26,7 @@ require(["WebCrypto"], function(WebCrypto){
     var encoder = new TextEncoder("utf-8");
     var data = encoder.encode("abc");
 
-    WebCrypto.sha1(data, function(hash) {
+    SHA.sha1(data, function(hash) {
 	    // Expect: a9993e364706816aba3e25717850c26c9cd0d89d
 	    console.log(sha1ArrayBufferToString(hash));
     });

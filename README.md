@@ -12,8 +12,6 @@ This wrapper does not use any polyfill, it uses the raw Web Cryptography API.
 
 ## TODO
 
-* Modules for different cryptos
 * bower.js
-* require.js
 * semver.org
 * gh-pages for examples
