@@ -1,32 +1,40 @@
-require(["SHA"], function(SHA){
+/*global require, Uint8Array, console, TextEncoder*/
+/*jslint bitwise: true */
 
-    var sha1ArrayBufferToString = function(buffer) {
+require(["SHA"], function (SHA) {
 
-	    // From sha1.js
-	    var cvt_hex = function (val) {
-		    var str = "";
-		    var i;
-		    var v;
+    "use strict";
 
-		    for (i = 1; i >= 0; i--) {
+    var sha1ArrayBufferToString,
+        encoder = new TextEncoder("utf-8"),
+        data = encoder.encode("abc");
+    
+    sha1ArrayBufferToString = function (buffer) {
+
+	    var i,
+            cvt_hex,
+            uint8 = new Uint8Array(buffer),
+            temp = "";
+
+        cvt_hex = function (val) {
+		    var str = "",
+		        i,
+		        v;
+
+		    for (i = 1; i >= 0; i = i - 1) {
 			    v = (val >>> (i * 4)) & 0x0f;
 			    str += v.toString(16);
 		    }
 		    return str;
 	    };
-
-	    var uint8 = new Uint8Array(buffer);
-	    var temp = "";
-	    for(var i=0;i<uint8.length; i++) {
+        
+	    for (i = 0; i < uint8.length; i = i + 1) {
 		    temp += cvt_hex(uint8[i]);
 	    }
 	    return temp.toLowerCase();
     };
 
-    var encoder = new TextEncoder("utf-8");
-    var data = encoder.encode("abc");
-
-    SHA.sha1(data, function(hash) {
+    SHA.sha1(data, function (hash) {
 	    // Expect: a9993e364706816aba3e25717850c26c9cd0d89d
 	    console.log(sha1ArrayBufferToString(hash));
     });
