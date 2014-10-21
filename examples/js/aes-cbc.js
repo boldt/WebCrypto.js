@@ -10,15 +10,18 @@ require(["AESCBC"], function (AESCBC) {
     
     console.log("Data: ", text);
 
-    AESCBC.generateKey(function (key) {
+	var aescbc = new AESCBC();
+	var aescbc2 = new AESCBC();
+
+    aescbc.generateKey(function (key) {
         console.log("Key: ", key);
-        AESCBC.encrypt(key, data, function (data_enc) {
+        aescbc.encrypt(key, data, function (data_enc) {
 	        console.log("Encrypted data: ", new Uint8Array(data_enc));
-	        AESCBC.exportKey(key, function (key_ex) {
-		        console.log("Exported key", new Uint8Array(key_ex));
-		        AESCBC.importKey(key_ex, function (key_im) {
+	        aescbc.exportKey(key, function (key_ex) {
+		        console.log("Exported key + IV", new Uint8Array(key_ex));
+		        aescbc2.importKey(key_ex, function (key_im) {
 			        console.log("Imported key", key_im);
-			        AESCBC.decrypt(key_im, data_enc, function (data_dec) {
+			        aescbc2.decrypt(key_im, data_enc, function (data_dec) {
 				        var decoder = new TextDecoder("utf-8"),
                             text = decoder.decode(new Uint8Array(data_dec));
 				        console.log("Decrypted data: ", text);
