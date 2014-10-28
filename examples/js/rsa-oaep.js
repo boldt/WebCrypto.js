@@ -16,11 +16,11 @@ require(["RSAOAEP"], function (RSAOAEP) {
 		    console.log("Key exported: ", new Uint8Array(key_exported));
 		    RSAOAEP.importKey(key_exported, function (key_imported) {
 		        console.log("Imported key", key_imported);
-			    RSAOAEP.encrypt(key_imported, data, function (encryptedData) {
-		            console.log("Encrypted data: ", new Uint8Array(encryptedData));
-				    RSAOAEP.decrypt(keys.privateKey, encryptedData, function (decryptedData) {
+			    RSAOAEP.encrypt(key_imported, data, function (data_encrypted) {
+		            console.log("Encrypted data: ", new Uint8Array(data_encrypted));
+				    RSAOAEP.decrypt(keys.privateKey, data_encrypted, function (data_decrypted) {
 					    var decoder = new TextDecoder("utf-8"),
-                            text = decoder.decode(new Uint8Array(decryptedData));
+                            text = decoder.decode(new Uint8Array(data_decrypted));
 					    console.log("Decrypted data: ", text);
 				    });
 			    });
