@@ -5,7 +5,7 @@ require(["ECDH"], function (ECDH) {
 
   "use strict";
 
-  var length = 256; // Bit!
+  var length = 256; // #Bit
 
   var e = new ECDH();
   e.generateKeys(function(keys) {

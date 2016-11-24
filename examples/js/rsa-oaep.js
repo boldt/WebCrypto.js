@@ -3,11 +3,11 @@
 require(["RSAOAEP"], function (RSAOAEP) {
 
     "use strict";
-    
+
     var text = "Hello World!",
         encoder = new TextEncoder("utf-8"),
         data = encoder.encode(text);
-    
+
     console.log("Data: ", text);
 
     RSAOAEP.generateKeys(function (keys) {

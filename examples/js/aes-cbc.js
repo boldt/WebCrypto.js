@@ -3,13 +3,13 @@
 require(["AESCBC"], function (AESCBC) {
 
     "use strict";
-    
+
     var text = "Hello World!",
         encoder = new TextEncoder("utf-8"),
         data = encoder.encode(text),
         aescbc = new AESCBC(),
         aescbc2 = new AESCBC();
-    
+
     console.log("Data: ", text);
 
     aescbc.generateKey(function (key) {

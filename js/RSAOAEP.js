@@ -6,54 +6,54 @@
  */
 define([], function () {
 
-    "use strict";
+  "use strict";
 
-    // RSA OAEP config
-    var rsaoaep = {},
-        RSAOAEP = function () {};
-    
-    rsaoaep.algorithmName = "RSA-OAEP";
-    rsaoaep.modLength = 2048;
-    rsaoaep.exponent = new Uint8Array([1, 0, 1]); // 24 bit representation of 65537
-    rsaoaep.hashAlgo = "SHA-256";
-    rsaoaep.extractable = true; // can extract it later if we want
-    rsaoaep.keyUsages = ["encrypt", "decrypt"];
-    rsaoaep.exportMethod = 'spki';
-    rsaoaep.rsaOaepParams =  {
-        name: rsaoaep.algorithmName,
-        modulusLength: rsaoaep.modLength,
-        publicExponent: rsaoaep.exponent,
-        hash: {
-            name: rsaoaep.hashAlgo
-        }
-    };
-    rsaoaep.rsaHashedImportParams = {
-        name: rsaoaep.algorithmName,
-        hash: {
-            name: rsaoaep.hashAlgo
-        }
-    };
+  var config = {};
+  config.algorithmName = "RSA-OAEP";
+  config.modLength = 2048;
+  config.exponent = new Uint8Array([1, 0, 1]); // 24 bit representation of 65537
+  config.hashAlgo = "SHA-256";
+  config.extractable = true; // can extract it later if we want
+  config.keyUsages = ["encrypt", "decrypt"];
+  config.exportMethod = 'spki';
+  config.rsaOaepParams =  {
+    name: config.algorithmName,
+    modulusLength: config.modLength,
+    publicExponent: config.exponent,
+    hash: {
+      name: config.hashAlgo
+    }
+  };
 
-    RSAOAEP.generateKeys = function (callback) {
-        crypto.subtle.generateKey(rsaoaep.rsaOaepParams, rsaoaep.extractable, rsaoaep.keyUsages).then(callback);
-    };
+  config.rsaHashedImportParams = {
+    name: config.algorithmName,
+    hash: {
+      name: config.hashAlgo
+    }
+  };
 
-    RSAOAEP.exportKey = function (key_public, callback) {
-        crypto.subtle.exportKey(rsaoaep.exportMethod, key_public).then(callback);
-    };
+  var RSAOAEP = function () {};
 
-    RSAOAEP.importKey = function (key_public, callback) {
-        crypto.subtle.importKey(rsaoaep.exportMethod, key_public, rsaoaep.rsaHashedImportParams, true, ["encrypt"]).then(callback);
-    };
+  RSAOAEP.generateKeys = function (callback) {
+    crypto.subtle.generateKey(config.rsaOaepParams, config.extractable, config.keyUsages).then(callback);
+  };
 
-    RSAOAEP.encrypt = function (key_public, data_raw, callback) {
-        crypto.subtle.encrypt(rsaoaep.rsaOaepParams, key_public, data_raw).then(callback);
-    };
+  RSAOAEP.exportKey = function (key_public, callback) {
+    crypto.subtle.exportKey(config.exportMethod, key_public).then(callback);
+  };
 
-    RSAOAEP.decrypt = function (key_private, data_encrypted, callback) {
-        crypto.subtle.decrypt(rsaoaep.rsaOaepParams, key_private, data_encrypted).then(callback);
-    };
+  RSAOAEP.importKey = function (key_public, callback) {
+    crypto.subtle.importKey(config.exportMethod, key_public, config.rsaHashedImportParams, true, ["encrypt"]).then(callback);
+  };
 
-    return RSAOAEP;
+  RSAOAEP.encrypt = function (key_public, data_raw, callback) {
+    crypto.subtle.encrypt(config.rsaOaepParams, key_public, data_raw).then(callback);
+  };
+
+  RSAOAEP.decrypt = function (key_private, data_encrypted, callback) {
+    crypto.subtle.decrypt(config.rsaOaepParams, key_private, data_encrypted).then(callback);
+  };
+
+  return RSAOAEP;
 });
 
