@@ -24,7 +24,6 @@ define([], function () {
       name: config.hashAlgo
     }
   };
-
   config.rsaHashedImportParams = {
     name: config.algorithmName,
     hash: {
@@ -55,5 +54,5 @@ define([], function () {
   };
 
   return RSAOAEP;
-});
 
+});
