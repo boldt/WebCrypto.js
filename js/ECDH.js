@@ -6,9 +6,10 @@
  * https://www.w3.org/TR/WebCryptoAPI/#ecdh
  */
 
-define([], function () {
-
   "use strict";
+
+  var Shims = require('shims');
+  var crypto = Shims.crypto;
 
   var ecdh = {};
   ecdh.name = "ECDH";
@@ -64,6 +65,4 @@ define([], function () {
     });
   };
 
-  return ECDH;
-});
-
+  module.exports = ECDH;

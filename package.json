@@ -1,8 +1,8 @@
 {
   "name": "WebCrypto.js",
   "version": "0.0.0",
-  "description": "WebCrypto.js is a simple JavaScript library for the [Web Cryptography API](http://www.w3.org/TR/WebCryptoAPI/). This library does not use any polyfill, it uses the raw Web Cryptography API. This library just provides features, which are working in **all** supported browsers.",
-  "main": "test.js",
+  "description": "WebCrypto.js is a simple JavaScript library for the Web Cryptography API.",
+  "main": "js/webcrypto.js",
   "directories": {
     "example": "examples",
     "baseURL": "dist",

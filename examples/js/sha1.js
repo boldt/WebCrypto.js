@@ -1,14 +1,11 @@
-/*global require, Uint8Array, console, TextEncoder*/
-/*jslint bitwise: true */
-
 "use strict";
 
-var SHA = require('../../js/SHA');
 var Shims = require('shims');
+var webcrypto = require('../../js/webcrypto');
 
 var TextEncoder = Shims.TextEncoder;
 var TextDecoder = Shims.TextDecoder;
-
+var SHA = webcrypto.SHA;
 
 var sha1ArrayBufferToString,
     encoder = new TextEncoder("utf-8"),

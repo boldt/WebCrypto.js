@@ -4,9 +4,11 @@
  * RSA OAEP
  * http://www.w3.org/TR/WebCryptoAPI/#rsa-oaep
  */
-define([], function () {
 
   "use strict";
+
+  var Shims = require('shims');
+  var crypto = Shims.crypto;
 
   var config = {};
   config.algorithmName = "RSA-OAEP";
@@ -53,6 +55,4 @@ define([], function () {
     crypto.subtle.decrypt(config.rsaOaepParams, key_private, data_encrypted).then(callback);
   };
 
-  return RSAOAEP;
-
-});
+  module.exports = RSAOAEP;

@@ -1,7 +1,8 @@
 "use strict";
 
-var AESCBC = require('../../js/AESCBC');
 var Shims = require('shims');
+var webcrypto = require('../../js/webcrypto');
+var AESCBC = webcrypto.AESCBC;
 
 var TextEncoder = Shims.TextEncoder;
 var TextDecoder = Shims.TextDecoder;

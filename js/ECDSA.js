@@ -4,9 +4,10 @@
  * RSA OAEP
  * http://www.w3.org/TR/WebCryptoAPI/#rsa-oaep
  */
-define([], function () {
-
   "use strict";
+
+  var Shims = require('shims');
+  var crypto = Shims.crypto;
 
   var config = {};
   config.name = "ECDSA";
@@ -59,6 +60,4 @@ define([], function () {
     crypto.subtle.importKey(config.exportMethod, key, config.keyGenParams, false, ["verify"])    .then(callback);
   };
 
-  return ECDSA;
-
-});
+  module.exports = ECDSA;
