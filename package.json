@@ -3,37 +3,27 @@
   "version": "0.0.0",
   "description": "WebCrypto.js is a simple JavaScript library for the Web Cryptography API.",
   "main": "js/webcrypto.js",
-  "directories": {
-    "example": "examples",
-    "baseURL": "dist",
-    "packages": "jspm_packages"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git://github.com/boldt/WebCrypto.js.git"
   },
-  "author": "",
-  "license": "BSD",
-  "readmeFilename": "README.md",
-  "gitHead": "302c85f7d57c3bbcaaa82d3e1ec848bcc34a1409",
   "dependencies": {
-    "shims": "file:./env/node/shims",
+    "adapters": "boldt/adapters-node#master"
+  },
+  "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
-    "crypto": "0.0.3",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "jspm": "^0.16.51",
-    "node-webcrypto-ossl": "^1.0.16",
-    "text-encoding": "^0.6.4"
+    "jspm": "^0.16.51"
   },
   "jspm": {
-    "directories": {
-      "example": "examples"
+    "dependencies": {
+      "adapters": "github:boldt/adapters-browser@master"
     },
-    "dependencies": {},
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",

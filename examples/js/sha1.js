@@ -1,10 +1,10 @@
 "use strict";
 
-var Shims = require('shims');
+var adapters = require('adapters');
 var webcrypto = require('../../js/webcrypto');
 
-var TextEncoder = Shims.TextEncoder;
-var TextDecoder = Shims.TextDecoder;
+var TextEncoder = adapters.TextEncoder;
+var TextDecoder = adapters.TextDecoder;
 var SHA = webcrypto.SHA;
 
 var sha1ArrayBufferToString,

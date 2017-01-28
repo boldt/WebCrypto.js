@@ -2,13 +2,13 @@
 
     "use strict";
 
-	var Shims = require('shims');
+	var adapters = require('adapters');
 	var webcrypto = require('../../js/webcrypto');
 	var AESCBC = webcrypto.AESCBC;
 	var SHA = webcrypto.SHA;
 
-	var TextEncoder = Shims.TextEncoder;
-	var TextDecoder = Shims.TextDecoder;
+	var TextEncoder = adapters.TextEncoder;
+	var TextDecoder = adapters.TextDecoder;
 
     // Generated with pwgen
     var password = "Ce8joosuLe6phais",

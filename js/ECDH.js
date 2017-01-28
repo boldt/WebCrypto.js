@@ -8,8 +8,8 @@
 
   "use strict";
 
-  var Shims = require('shims');
-  var crypto = Shims.crypto;
+  var adapters = require('adapters');
+  var crypto = adapters.crypto;
 
   var ecdh = {};
   ecdh.name = "ECDH";
