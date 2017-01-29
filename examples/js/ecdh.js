@@ -14,11 +14,9 @@ var ECDH = webcrypto.ECDH;
 
   var e = new ECDH();
   e.generateKeys(function(keys) {
-
     var publicKey = keys.publicKey;
     var privateKey = keys.privateKey;
     e.exportKey(publicKey, function(exportKey) {
-	  console.log('GO GO GO');
       console.info('exportKey', exportKey);
       e.importKey(exportKey, function(importKey) {
         console.info('importKey', importKey);
