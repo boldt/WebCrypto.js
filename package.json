@@ -12,7 +12,7 @@
     "url": "git://github.com/boldt/WebCrypto.js.git"
   },
   "dependencies": {
-    "adapters": "boldt/adapters-node#master"
+    "adapters": "boldt/adapters-webpack"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
