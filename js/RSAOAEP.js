@@ -33,23 +33,23 @@ config.rsaHashedImportParams = {
 var RSAOAEP = function () {};
 
 RSAOAEP.generateKeys = function (callback) {
-  crypto.subtle.generateKey(config.rsaOaepParams, config.extractable, config.keyUsages).then(callback);
+  window.crypto.subtle.generateKey(config.rsaOaepParams, config.extractable, config.keyUsages).then(callback);
 };
 
 RSAOAEP.exportKey = function (key_public, callback) {
-  crypto.subtle.exportKey(config.exportMethod, key_public).then(callback);
+  window.crypto.subtle.exportKey(config.exportMethod, key_public).then(callback);
 };
 
 RSAOAEP.importKey = function (key_public, callback) {
-  crypto.subtle.importKey(config.exportMethod, key_public, config.rsaHashedImportParams, true, ["encrypt"]).then(callback);
+  window.crypto.subtle.importKey(config.exportMethod, key_public, config.rsaHashedImportParams, true, ["encrypt"]).then(callback);
 };
 
 RSAOAEP.encrypt = function (key_public, data_raw, callback) {
-  crypto.subtle.encrypt(config.rsaOaepParams, key_public, data_raw).then(callback);
+  window.crypto.subtle.encrypt(config.rsaOaepParams, key_public, data_raw).then(callback);
 };
 
 RSAOAEP.decrypt = function (key_private, data_encrypted, callback) {
-  crypto.subtle.decrypt(config.rsaOaepParams, key_private, data_encrypted).then(callback);
+  window.crypto.subtle.decrypt(config.rsaOaepParams, key_private, data_encrypted).then(callback);
 };
 
 module.exports = RSAOAEP;

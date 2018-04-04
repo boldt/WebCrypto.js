@@ -6,8 +6,6 @@
  * https://www.w3.org/TR/WebCryptoAPI/#ecdh
  */
 
-var crypto = window.crypto;
-
 var ecdh = {};
 ecdh.name = "ECDH";
 ecdh.extractable = false;
@@ -23,12 +21,12 @@ var ECDH = function() {}
 
 // Creates a public and a private key
 ECDH.prototype.generateKeys = function (callback) {
-  crypto.subtle.generateKey(ecdh.KeyGenParams, ecdh.extractable, ecdh.keyUsages).then(callback);
+  window.crypto.subtle.generateKey(ecdh.KeyGenParams, ecdh.extractable, ecdh.keyUsages).then(callback);
 };
 
 // This exports the public key as raw/or jwt
 ECDH.prototype.exportKey = function (key, callback) {
-  crypto.subtle.exportKey(ecdh.exportMethod, key)
+  window.crypto.subtle.exportKey(ecdh.exportMethod, key)
   .then(function(keydata){
     if(ecdh.exportMethod == "raw") {
       console.log('keydata', keydata); // contains crv, x, y
@@ -48,7 +46,7 @@ ECDH.prototype.exportKey = function (key, callback) {
 // This imports a public key
 ECDH.prototype.importKey = function (key, callback) {
   // empty array, if importing an public key
-  crypto.subtle.importKey(ecdh.exportMethod, key, ecdh.KeyGenParams, ecdh.extractable, [])
+  window.crypto.subtle.importKey(ecdh.exportMethod, key, ecdh.KeyGenParams, ecdh.extractable, [])
   .then(callback);
 };
 
@@ -57,7 +55,7 @@ ECDH.prototype.deriveBits = function (publicKey, privateKey, length, callback) {
   var KeyGenParams = ecdh.KeyGenParams;
   KeyGenParams.public = publicKey;
 
-  crypto.subtle.deriveBits(KeyGenParams, privateKey, length).then(function(bits){
+  window.crypto.subtle.deriveBits(KeyGenParams, privateKey, length).then(function(bits){
     callback(new Uint8Array(bits));
   }).catch(function(err){
     console.error(err);
