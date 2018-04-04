@@ -5,10 +5,7 @@
  * http://www.w3.org/TR/WebCryptoAPI/#aes-cbc
  */
 
-"use strict";
-
-var adapters = require('adapters');
-var crypto = adapters.crypto;
+var crypto = window.crypto;
 
 var config = {};
 config.algorithmName = 'AES-CBC';

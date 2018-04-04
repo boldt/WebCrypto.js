@@ -38,31 +38,6 @@ Install dependencies:
 npm install
 ```
 
-We creates a Makefile to bundle the examples (uses **jspm**):
-
-```
-make
-```
-
-### Node
-
-Install dependencies:
-
-```
-npm install
-```
-
-Run examples:
-
-```
-node examples/js/sha1.js
-node examples/js/aes-cbc.js
-node examples/js/aes-cbc-2.js
-node examples/js/ecdsa.js
-node examples/js/rsa-oaep.js
-node examples/js/ecdh.js // DOES NOT WORK
-```
-
 ## Supported Browsers
 
 * Chrome 54.0
@@ -75,8 +50,3 @@ node examples/js/ecdh.js // DOES NOT WORK
 ## Links
 
 * https://diafygi.github.io/webcrypto-examples/
-
-## TODO
-
-* bower.js
-* semver.org
