@@ -30,41 +30,41 @@ In a node environment, this library uses corresponding **node-webcrypto-ossl**.
 
 ## Examples
 
-### Browser
-
 Install dependencies:
 
 ```
+nvm install
 npm install
 ```
 
-We creates a Makefile to bundle the examples (uses **jspm**):
+### Browser
 
 ```
-make
+npm run build-node
 ```
+
+Open examples folder.
 
 ### Node
 
-Install dependencies:
-
 ```
-npm install
+npm run build-node
 ```
 
 Run examples:
 
 ```
-node examples/js/sha1.js
-node examples/js/aes-cbc.js
-node examples/js/aes-cbc-2.js
-node examples/js/ecdsa.js
-node examples/js/rsa-oaep.js
-node examples/js/ecdh.js // DOES NOT WORK
+node dist/node/sha1.js
+node dist/node/aes-cbc.js
+node dist/node/aes-cbc-2.js
+node dist/node/ecdsa.js
+node dist/node/rsa-oaep.js
+node dist/node/ecdh.js
 ```
 
-## Supported Browsers
+## Supported Environments
 
+* Node 8.11.1
 * Chrome 54.0
 * Firefox 50.0
 
