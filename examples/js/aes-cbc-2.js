@@ -1,8 +1,14 @@
 /*global require, Uint8Array, console, TextEncoder, TextDecoder*/
 
-require(["AESCBC", "SHA"], function (AESCBC, SHA) {
-
     "use strict";
+
+	var adapters = require('adapters');
+	var webcrypto = require('../../js/webcrypto');
+	var AESCBC = webcrypto.AESCBC;
+	var SHA = webcrypto.SHA;
+
+	var TextEncoder = adapters.TextEncoder;
+	var TextDecoder = adapters.TextDecoder;
 
     // Generated with pwgen
     var password = "Ce8joosuLe6phais",
@@ -39,4 +45,3 @@ require(["AESCBC", "SHA"], function (AESCBC, SHA) {
             });
         });
     });    
-});

@@ -1,9 +1,15 @@
 /*global require, Uint8Array, console, TextEncoder*/
 /*jslint bitwise: true */
 
-require(["ECDSA"], function (ECDSA) {
+"use strict";
 
-  "use strict";
+var adapters = require('adapters');
+var webcrypto = require('../../js/webcrypto');
+
+var TextEncoder = adapters.TextEncoder;
+var TextDecoder = adapters.TextDecoder;
+var ECDSA = webcrypto.ECDSA;
+
 
   var text = "Hello World!",
       encoder = new TextEncoder("utf-8"),
@@ -40,4 +46,4 @@ require(["ECDSA"], function (ECDSA) {
     });
 
   });
-});
+

@@ -1,8 +1,9 @@
 # WebCrypto.js
 
 WebCrypto.js is a simple JavaScript library for the [Web Cryptography API](http://www.w3.org/TR/WebCryptoAPI/).
-This library does not use any polyfill, it uses the raw Web Cryptography API.
-This library just provides features, which are working in **all** supported browsers.
+
+In an browser environment, this library uses the raw Web Cryptography API.
+In a node environment, this library uses corresponding **node-webcrypto-ossl**.
 
 **Hint: work is still in progress**
 
@@ -27,8 +28,43 @@ This library just provides features, which are working in **all** supported brow
 - [ ] PBKDF2
 - [ ] DH
 
-## Supported Browsers
+## Examples
 
+Install dependencies:
+
+```
+nvm install
+npm install
+```
+
+### Browser
+
+```
+npm run build-node
+```
+
+Open examples folder.
+
+### Node
+
+```
+npm run build-node
+```
+
+Run examples:
+
+```
+node dist/node/sha1.js
+node dist/node/aes-cbc.js
+node dist/node/aes-cbc-2.js
+node dist/node/ecdsa.js
+node dist/node/rsa-oaep.js
+node dist/node/ecdh.js
+```
+
+## Supported Environments
+
+* Node 8.11.1
 * Chrome 54.0
 * Firefox 50.0
 

@@ -1,15 +1,19 @@
 /*global require, Uint8Array, console, TextEncoder*/
 /*jslint bitwise: true */
 
-require(["ECDH"], function (ECDH) {
+"use strict";
 
-  "use strict";
+var adapters = require('adapters');
+var webcrypto = require('../../js/webcrypto');
+
+var TextEncoder = adapters.TextEncoder;
+var TextDecoder = adapters.TextDecoder;
+var ECDH = webcrypto.ECDH;
 
   var length = 256; // #Bit
 
   var e = new ECDH();
   e.generateKeys(function(keys) {
-
     var publicKey = keys.publicKey;
     var privateKey = keys.privateKey;
     e.exportKey(publicKey, function(exportKey) {
@@ -43,4 +47,3 @@ require(["ECDH"], function (ECDH) {
     });
   });
 
-});

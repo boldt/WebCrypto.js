@@ -1,42 +1,43 @@
-/*global require, Uint8Array, console, TextEncoder*/
-/*jslint bitwise: true */
+"use strict";
 
-require(["SHA"], function (SHA) {
+var adapters = require('adapters');
+var webcrypto = require('../../js/webcrypto');
 
-    "use strict";
+var TextEncoder = adapters.TextEncoder;
+var TextDecoder = adapters.TextDecoder;
+var SHA = webcrypto.SHA;
 
-    var sha1ArrayBufferToString,
-        encoder = new TextEncoder("utf-8"),
-        data = encoder.encode("abc");
-    
-    sha1ArrayBufferToString = function (buffer) {
+var sha1ArrayBufferToString,
+    encoder = new TextEncoder("utf-8"),
+    data = encoder.encode("abc");
 
-	    var i,
-            cvt_hex,
-            uint8 = new Uint8Array(buffer),
-            temp = "";
+sha1ArrayBufferToString = function (buffer) {
 
-        cvt_hex = function (val) {
-		    var str = "",
-		        i,
-		        v;
+    var i,
+        cvt_hex,
+        uint8 = new Uint8Array(buffer),
+        temp = "";
 
-		    for (i = 1; i >= 0; i = i - 1) {
-			    v = (val >>> (i * 4)) & 0x0f;
-			    str += v.toString(16);
-		    }
-		    return str;
-	    };
-        
-	    for (i = 0; i < uint8.length; i = i + 1) {
-		    temp += cvt_hex(uint8[i]);
+    cvt_hex = function (val) {
+	    var str = "",
+	        i,
+	        v;
+
+	    for (i = 1; i >= 0; i = i - 1) {
+		    v = (val >>> (i * 4)) & 0x0f;
+		    str += v.toString(16);
 	    }
-	    return temp.toLowerCase();
+	    return str;
     };
+    
+    for (i = 0; i < uint8.length; i = i + 1) {
+	    temp += cvt_hex(uint8[i]);
+    }
+    return temp.toLowerCase();
+};
 
-    SHA.sha1(data, function (hash) {
-	    // Expect: a9993e364706816aba3e25717850c26c9cd0d89d
-	    console.log(sha1ArrayBufferToString(hash));
-    });
-
+SHA.sha1(data, function (hash) {
+    // Expect: a9993e364706816aba3e25717850c26c9cd0d89d
+    console.log('SHA-1: ', sha1ArrayBufferToString(hash));
 });
+

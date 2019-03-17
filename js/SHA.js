@@ -4,9 +4,10 @@
  * SHA
  * http://www.w3.org/TR/WebCryptoAPI/#sha
  */
-define([], function () {
-
   "use strict";
+
+  var adapters = require('adapters');
+  var crypto = adapters.crypto;
 
   var SHA = {};
 
@@ -26,5 +27,4 @@ define([], function () {
     crypto.subtle.digest({ name: 'sha-512' }, ab).then(callback);
   };
 
-  return SHA;
-});
+  module.exports = SHA;

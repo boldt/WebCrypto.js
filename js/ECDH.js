@@ -6,16 +6,17 @@
  * https://www.w3.org/TR/WebCryptoAPI/#ecdh
  */
 
-define([], function () {
-
   "use strict";
+
+  var adapters = require('adapters');
+  var crypto = adapters.crypto;
 
   var ecdh = {};
   ecdh.name = "ECDH";
   ecdh.extractable = false;
   ecdh.curve = "P-256"; // P-256, P-384, or P-512
   ecdh.keyUsages = ["deriveBits"];
-  ecdh.exportMethod = 'raw'; // jwk or raw
+  ecdh.exportMethod = 'jwk'; // jwk or raw,raw
   ecdh.KeyGenParams = {
     name: ecdh.name,
     namedCurve: ecdh.curve
@@ -42,6 +43,8 @@ define([], function () {
         console.log('y', keydata.y);
         callback(keydata);
       }
+    }).catch(function (err) {
+      console.log(err);
     });
   };
 
@@ -64,6 +67,4 @@ define([], function () {
     });
   };
 
-  return ECDH;
-});
-
+  module.exports = ECDH;

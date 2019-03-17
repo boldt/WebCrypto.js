@@ -1,8 +1,13 @@
 /*global require, Uint8Array, console, TextEncoder, TextDecoder*/
 
-require(["RSAOAEP"], function (RSAOAEP) {
-
     "use strict";
+	
+	var adapters = require('adapters');
+	var webcrypto = require('../../js/webcrypto');
+
+	var TextEncoder = adapters.TextEncoder;
+	var TextDecoder = adapters.TextDecoder;
+	var RSAOAEP = webcrypto.RSAOAEP;
 
     var text = "Hello World!",
         encoder = new TextEncoder("utf-8"),
@@ -28,4 +33,3 @@ require(["RSAOAEP"], function (RSAOAEP) {
 	    });
     });
 
-});
